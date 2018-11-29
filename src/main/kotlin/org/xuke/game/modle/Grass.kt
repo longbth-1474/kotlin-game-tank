@@ -2,20 +2,16 @@ package org.xuke.game.modle
 
 import org.itheima.kotlin.game.core.Painter
 import org.xuke.game.Config
+import org.xuke.game.`interface`.View
 
 /**
  * 草坪
  * */
-class Grass {
-    //位置
-    var x: Int = 200
-    var y: Int = 200
-    //宽高
-    var width: Int = Config.block
-    var height: Int = Config.block
+class Grass(override val x: Int, override val y: Int) : View {
+    override val width: Int = Config.block
+    override val height: Int = Config.block
 
-    //显示
-    fun draw() {
+    override fun draw() {
         Painter.drawImage("img/grass.gif", x, y)
     }
 }

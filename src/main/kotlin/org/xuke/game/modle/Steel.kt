@@ -5,13 +5,13 @@ import org.xuke.game.Config
 import org.xuke.game.`interface`.View
 
 /**
- * 砖墙
+ * 铁墙
  * */
-class Wall(override val x: Int, override val y: Int) : View {
+class Steel(override val x: Int, override val y: Int) : View {
     override val width: Int = Config.block
     override val height: Int = Config.block
 
     override fun draw() {
-        Painter.drawImage("img/wall.gif", x, y)
+        Painter.drawImage("img/steel.gif", x, y)
     }
 }
