@@ -3,7 +3,10 @@ package org.xuke.game
 import javafx.scene.input.KeyEvent
 import org.itheima.kotlin.game.core.Window
 import org.xuke.game.`interface`.View
+import org.xuke.game.modle.Grass
+import org.xuke.game.modle.Steel
 import org.xuke.game.modle.Wall
+import org.xuke.game.modle.Water
 import java.io.File
 
 class GameWindow : Window(
@@ -31,6 +34,9 @@ class GameWindow : Window(
                 //每个字
                 when (it) {
                     '砖' -> views.add(Wall(cloumnNum * Config.block, lineNum * Config.block))
+                    '铁' -> views.add(Steel(cloumnNum * Config.block, lineNum * Config.block))
+                    '草' -> views.add(Grass(cloumnNum * Config.block, lineNum * Config.block))
+                    '水' -> views.add(Water(cloumnNum * Config.block, lineNum * Config.block))
                 }
                 cloumnNum++
             }
