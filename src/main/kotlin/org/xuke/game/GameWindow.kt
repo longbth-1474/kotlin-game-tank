@@ -1,12 +1,11 @@
 package org.xuke.game
 
+import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import org.itheima.kotlin.game.core.Window
 import org.xuke.game.`interface`.View
-import org.xuke.game.modle.Grass
-import org.xuke.game.modle.Steel
-import org.xuke.game.modle.Wall
-import org.xuke.game.modle.Water
+import org.xuke.game.enums.Direction
+import org.xuke.game.modle.*
 import java.io.File
 
 class GameWindow : Window(
@@ -15,8 +14,11 @@ class GameWindow : Window(
         width = Config.gameWith,
         height = Config.gameHeight
 ) {
+    //管理元素的集合
+    private val views = arrayListOf<View>()
 
-    var views = arrayListOf<View>()
+    //晚点创建
+    private lateinit var tank: Tank
 
     override fun onCreate() {
         //地图
@@ -42,6 +44,12 @@ class GameWindow : Window(
             }
             lineNum++
         }
+
+
+        //添加我方的坦克
+        tank = Tank(Config.block * 10, Config.block * 12)
+        views.add(tank)
+
     }
 
     override fun onDisplay() {
@@ -54,6 +62,24 @@ class GameWindow : Window(
     }
 
     override fun onKeyPressed(event: KeyEvent) {
+
+        when (event.code) {
+            KeyCode.W -> {
+                tank.move(Direction.UP)
+            }
+
+            KeyCode.S -> {
+                tank.move(Direction.DOWN)
+            }
+
+            KeyCode.A -> {
+                tank.move(Direction.LEFT)
+            }
+
+            KeyCode.D -> {
+                tank.move(Direction.RIGHT)
+            }
+        }
     }
 
     override fun onRefresh() {
